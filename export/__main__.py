@@ -17,4 +17,12 @@ if __name__ == '__main__':
 
     for cubeType in times:
         for category in times[cubeType]:
-            print(category)
+            name = f'output/{cubeType}'
+            if category != 'Normal':
+                name += f'_{category}'
+            with open(name, 'w') as f:
+                for time in times[cubeType][category]:
+                    f.write(f'{time[3]};{time[2]};{time[5]};{time[4]}')
+                    if time[6] != '':
+                        f.write(f';{time[6]}')
+                    f.write('\n')
